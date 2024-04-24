@@ -78,13 +78,13 @@
     },
     methods: {
       getPatients() {
-        axios.get('http://localhost:3000/patient')
-          .then(response => {
-            this.patients = response.data;
-          })
-          .catch(error => {
-            console.error(error);
-          });
+        axios.get(this.$server+'patient')
+      .then(response => {
+        this.patients = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
       },
       createPatient() {
         this.$router.push('/patient/create');
@@ -97,7 +97,7 @@
     },
       async deletePatient(id) {
         try {
-          await axios.delete('http://localhost:3000/patient/'+id);
+          await axios.delete(this.$server+'patient/'+id);
           alert('Успешно удален!');
           this.getPatients();
         } catch (error) {

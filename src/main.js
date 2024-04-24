@@ -1,12 +1,19 @@
-import './assets/main.css'
-import { createApp } from 'vue'
+import './assets/main.css';
+import { createApp } from 'vue';
 
-import App from './App.vue'
-import axios from 'axios'
-import router from './router'
+import App from './App.vue';
+import axios from 'axios';
+import router from './router';
 
-const app = createApp(App)
-app.use(router)
-app.use(axios)
+// создаем экземпляр Vue
+const app = createApp(App);
 
-app.mount('#app')
+// устанавливаем свойство $server на экземпляр Vue
+app.config.globalProperties.$server = 'http://77.222.54.191:3000/';
+
+// добавляем плагины
+app.use(router);
+app.use(axios);
+
+// монтируем приложение
+app.mount('#app');

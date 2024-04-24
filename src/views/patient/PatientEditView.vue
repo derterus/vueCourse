@@ -38,7 +38,7 @@ export default {
   },
   async created() {
   try {
-    const response = await axios.get('http://localhost:3000/patient/' + this.id);
+    const response = await axios.get(this.$server+'patient/' + this.id);
     if (response.data.length > 0) {
       const patient = response.data[0];
       // Преобразуем дату в формат YYYY-MM-DD
@@ -68,7 +68,7 @@ export default {
 
       // Отправляем данные формы на сервер
       try {
-        await axios.put('http://localhost:3000/patient/' + this.id, formData);
+        await axios.put(this.$server+'patient/' + this.id, formData);
         alert('Пациент успешно обновлен!');
       } catch (error) {
         console.error(error);

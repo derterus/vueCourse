@@ -28,7 +28,7 @@
     methods: {
       getDoctor() {
         const id = this.$route.params.id;
-        axios.get('http://localhost:3000/doctors/' + id)
+        axios.get(this.$server+'doctors/' + id)
           .then(response => {
             this.doctor = response.data[0];
           })

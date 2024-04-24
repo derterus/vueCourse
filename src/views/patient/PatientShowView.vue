@@ -28,7 +28,7 @@
     methods: {
       getPatient() {
         const id = this.$route.params.id;
-        axios.get('http://localhost:3000/patient/' + id)
+        axios.get(this.$server+'patient/' + id)
           .then(response => {
             this.patient = response.data[0];
           })

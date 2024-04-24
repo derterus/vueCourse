@@ -55,7 +55,7 @@
       });
 
       // Отправляем данные формы на сервер
-      await axios.post('http://localhost:3000/doctors', formData);
+      await axios.post(this.$server+'doctors', formData);
       alert('Врач успешно добавлен!');
     } catch (error) {
       console.error(error);

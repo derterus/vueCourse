@@ -54,7 +54,7 @@ export default {
         });
 
         // Отправляем данные формы на сервер
-        await axios.post('http://localhost:3000/patient', formData);
+        await axios.post(this.$server+'patient', formData);
         alert('Пациент успешно добавлен!');
       } catch (error) {
         console.error(error);

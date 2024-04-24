@@ -38,7 +38,7 @@ export default {
   },
   async created() {
     try {
-      const response = await axios.get('http://localhost:3000/doctors/' + this.id);
+      const response = await axios.get(this.$server+'doctors/' + this.id);
       if (response.data.length > 0) {
         this.doctor = response.data[0];
       }
@@ -65,7 +65,7 @@ export default {
 
       // Отправляем данные формы на сервер
       try {
-        await axios.put('http://localhost:3000/doctors/' + this.id, formData);
+        await axios.put(this.$server+'doctors/' + this.id, formData);
         alert('Доктор успешно обновлен!');
       } catch (error) {
         console.error(error);

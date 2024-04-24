@@ -78,7 +78,7 @@
     },
     methods: {
       getDoctors() {
-        axios.get('http://localhost:3000/doctors')
+        axios.get(this.$server+'doctors')
           .then(response => {
             this.doctors = response.data;
           })
@@ -98,7 +98,7 @@
 
       async deleteDoctor(id) {
       try {
-      await axios.delete('http://localhost:3000/doctors/'+id);
+      await axios.delete(this.$server+'doctors/'+id);
       alert('Успешно удален!');
         this.getDoctors();
         } catch (error) {
