@@ -103,7 +103,7 @@ app.put('/doctors/:id', function(req, res) {
   if (req.files && Object.keys(req.files).length > 0) {
     // Если новый файл был загружен, обновляем фото
     let Photo = req.files.Photo;
-    let uploadPath = __dirname + '/uploads/doctors/' + Photo.name;
+    let uploadPath = __dirname + 'dist/uploads/doctors/' + Photo.name;
 
     // Используйте метод mv() для перемещения файла в указанную директорию
     Photo.mv(uploadPath, function(err) {
@@ -111,7 +111,7 @@ app.put('/doctors/:id', function(req, res) {
         return res.status(500).send(err);
     });
 
-    Photo = '../../uploads/doctors/' + Photo.name; // Обновляем путь к фото
+    Photo = '/uploads/doctors/' + Photo.name; // Обновляем путь к фото
 
     // Обновляем все поля, включая фото
     db.query("UPDATE doctors SET FirstName = ?, LastName = ?, Specialization = ?, PhoneNumber = ?, Email = ?, ExperienceYears = ?, WorkSchedule = ?, Adress = ?, Photo = ? WHERE id = ?", 
