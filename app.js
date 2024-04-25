@@ -88,7 +88,7 @@ app.post('/doctors', function(req, res) {
     const { FirstName, LastName, Specialization, PhoneNumber, Email, ExperienceYears, WorkSchedule, Adress } = req.body;
 
     db.query("INSERT INTO doctors (FirstName, LastName, Specialization, PhoneNumber, Email, ExperienceYears, WorkSchedule, Adress, Photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-    [FirstName, LastName, Specialization, PhoneNumber, Email, ExperienceYears, WorkSchedule, Adress, '../uploads/doctors/' + Photo.name], function (err, result) {
+    [FirstName, LastName, Specialization, PhoneNumber, Email, ExperienceYears, WorkSchedule, Adress, '/uploads/doctors/' + Photo.name], function (err, result) {
       if (err) throw err;
       res.send('Доктор успешно добавлен');
     });
@@ -111,7 +111,7 @@ app.put('/doctors/:id', function(req, res) {
         return res.status(500).send(err);
     });
 
-    Photo = '../uploads/doctors/' + Photo.name; // Обновляем путь к фото
+    Photo = '../../uploads/doctors/' + Photo.name; // Обновляем путь к фото
 
     // Обновляем все поля, включая фото
     db.query("UPDATE doctors SET FirstName = ?, LastName = ?, Specialization = ?, PhoneNumber = ?, Email = ?, ExperienceYears = ?, WorkSchedule = ?, Adress = ?, Photo = ? WHERE id = ?", 
